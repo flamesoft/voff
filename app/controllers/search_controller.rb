@@ -4,6 +4,12 @@ class SearchController < ApplicationController
     @location = params[:location]
     @date = params[:Date]
     gon.location = params[:location]
-    gon.dogsitters = User.all    #TODO: add area scope
+    dogsitters = User.all    #TODO: add area scope
+    gon.dogsitter_positions = []
+    dogsitters.each do |dogsitter|
+      position = {latitude: dogsitter[:latitude], longitude: dogsitter[:longitude]}
+      gon.dogsitter_positions.push(position)
+    end
+
   end
 end

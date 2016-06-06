@@ -9,8 +9,9 @@ end
 
 Given(/^that following dog sitters exist in the system$/) do |table|
   table.hashes.each do |user|
-    User.create(name: user[:name], address1: user[:address1], zip: user[:zip],
-    city: user[:city])
+    create(:user, name: user[:name], email: user[:email], password: user[:password],
+    address1: user[:address1], zip: user[:zip],
+    city: user[:city], latitude: user[:latitude], longitude: user[:longitude])
   end
 end
 

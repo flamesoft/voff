@@ -44,12 +44,13 @@ function addMarker(map, location){
 }
 
 function addMarkers(map){
-  var locations = [
-          [57.707, 11.975],
-          [57.708, 11.975]
-      ];
+  // var locations = [
+  //         [57.707, 11.975],
+  //         [57.708, 11.975]
+  //     ];
+  var locations = gon.dogsitter_positions;
   for (i = 0; i < locations.length; i++) {
-    addMarker(map, new google.maps.LatLng(locations[i][0], locations[i][1]));
+    addMarker(map, new google.maps.LatLng(locations[i].latitude, locations[i].longitude));
   }
 }
 
