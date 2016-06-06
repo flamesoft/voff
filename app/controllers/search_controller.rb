@@ -4,5 +4,6 @@ class SearchController < ApplicationController
     @location = params[:location]
     @date = params[:Date]
     gon.location = params[:location]
+    gon.dogsitters = User.all    #TODO: add area scope
   end
 end

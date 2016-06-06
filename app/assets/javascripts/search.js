@@ -32,20 +32,25 @@ function showResult(result) {
     map.setCenter(result.geometry.location);
     map.setMapTypeId(google.maps.MapTypeId.ROADMAP);
 
-    var marker = new google.maps.Marker({
-      position: result.geometry.location,
-      map: map,
-      title: 'Your position'
-    });
+    addMarker(map, result.geometry.location);
+    addMarkers(map);
 }
 
-function addMarker(geoPosition){
-  var map = new google.maps.Map(document.getElementById('map'));
+function addMarker(map, location){
   var marker = new google.maps.Marker({
-    position: geoPosition,
-    map: map,
-    title: 'Hello World!'
+    position: location,
+    map: map
   });
+}
+
+function addMarkers(map){
+  var locations = [
+          [57.707, 11.975],
+          [57.708, 11.975]
+      ];
+  for (i = 0; i < locations.length; i++) {
+    addMarker(map, new google.maps.LatLng(locations[i][0], locations[i][1]));
+  }
 }
 
 
