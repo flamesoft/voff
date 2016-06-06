@@ -24,6 +24,5 @@ Scenario: User sees searched place on the page
     And I fill in "location" with "Örebro"
     And I fill in "Date" with "2016-06-30"
     And I click on the "Search" button
-    #Then I should see a map centered at latitude "59.2781424" and longitude "15.1324149"
-    Then I should see a pin on the map
-#    And I should see "Anna"
+    Then I am on the "search page"
+    And I should see a pin on the map

@@ -32,26 +32,43 @@ function showResult(result) {
     map.setCenter(result.geometry.location);
     map.setMapTypeId(google.maps.MapTypeId.ROADMAP);
 
-    addMarker(map, result.geometry.location);
+    var infoText = makeInfoBox("Position", "My home");
+    addMarker(map, result.geometry.location, infoText);
     addMarkers(map);
 }
 
-function addMarker(map, location){
+function addMarker(map, location, infoText){
   var marker = new google.maps.Marker({
     position: location,
-    map: map
+    map: map,
+    id: 'markers'
   });
+  marker.addListener('click', function() {
+    infowindow.open(map, marker);
+  });
+
+  var infowindow = new google.maps.InfoWindow({
+    content: infoText
+  });
+
 }
 
 function addMarkers(map){
-  // var locations = [
-  //         [57.707, 11.975],
-  //         [57.708, 11.975]
-  //     ];
-  var locations = gon.dogsitter_positions;
-  for (i = 0; i < locations.length; i++) {
-    addMarker(map, new google.maps.LatLng(locations[i].latitude, locations[i].longitude));
+  for (i = 0; i < gon.dogsitters_info.length; i++) {
+      var contentString = makeInfoBox( gon.dogsitters_info[i].name,
+         gon.dogsitters_info[i].address1);
+      addMarker(map, new google.maps.LatLng(parseFloat(gon.dogsitters_info[i].latitude),
+          parseFloat(gon.dogsitters_info[i].longitude)),
+          contentString);
   }
+}
+
+function makeInfoBox(title, content){
+  var contentString = '<div id="infoBox">'+
+                      '<p><b>'+ title + '</b></p>' +
+                      '<p>'+ content + '</p>' +
+                      '</div>';
+  return contentString;
 }
 
 

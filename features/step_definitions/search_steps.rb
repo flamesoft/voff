@@ -4,7 +4,7 @@ Given(/^I am on the searchpage$/) do
 end
 
 Then(/^I should see a pin on the map$/) do
-  expect(page).to have_selector('#markers', count: 1)
+  expect(page).to have_selector('markers', count: 1)
 end
 
 Given(/^that following dog sitters exist in the system$/) do |table|
