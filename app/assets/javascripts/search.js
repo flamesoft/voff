@@ -31,9 +31,22 @@ function showResult(result) {
     map.setZoom(13);
     map.setCenter(result.geometry.location);
     map.setMapTypeId(google.maps.MapTypeId.ROADMAP);
+
+    var marker = new google.maps.Marker({
+      position: result.geometry.location,
+      map: map,
+      title: 'Your position'
+    });
 }
 
-
+function addMarker(geoPosition){
+  var map = new google.maps.Map(document.getElementById('map'));
+  var marker = new google.maps.Marker({
+    position: geoPosition,
+    map: map,
+    title: 'Hello World!'
+  });
+}
 
 
 // $(document).ready(function(){

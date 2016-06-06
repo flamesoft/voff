@@ -18,13 +18,12 @@ Scenario: User sees searched place on the page
     And I click on the "Search" button
     Then I should see "Stockholm 2016-06-03"
 
-# @javascript
-# Scenario: Map center and search results
-#    Given I am on the "home page"
-#    Then show me the page
-#    And I fill in "location" with "Örebro"
-#    And I fill in "Date" with "2016-06-30"
-#    And I click on the "Search" button
-#    Then I should see a map centered at latitude "59.2781424" and longitude "15.1324149"
-#    And I should see a pin
+ @javascript
+ Scenario: Map center and search results
+    Given I am on the "home page"
+    And I fill in "location" with "Örebro"
+    And I fill in "Date" with "2016-06-30"
+    And I click on the "Search" button
+    #Then I should see a map centered at latitude "59.2781424" and longitude "15.1324149"
+    And I should see a pin on the map
 #    And I should see "Anna"

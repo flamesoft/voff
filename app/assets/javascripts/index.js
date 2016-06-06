@@ -16,6 +16,10 @@ function initAutocomplete() {
   autocomplete.addListener('place_changed', fillInAddress);
 }
 
+function fillInAddress(){
+  var place = autocomplete.getPlace();
+}
+
 function geolocate() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {
